@@ -19,10 +19,13 @@ struct EditView: View {
             Slider(value: $scrumData.lengthInMinutes, in: 5...30, step: 1.0) {
               Text("Length")
             }
+            .accessibilityValue(Text("\(Int(scrumData.lengthInMinutes)) minutes"))
             Spacer()
             Text("\(Int(scrumData.lengthInMinutes)) minutes")
+              .accessibilityHidden(true)
           }
           ColorPicker("Color", selection: $scrumData.color)
+            .accessibilityLabel(Text("Color picker"))
         }
         
         Section(header: Text("Attendees")) {
@@ -41,6 +44,7 @@ struct EditView: View {
               }
             }, label: {
               Image(systemName: "plus.circle.fill")
+                .accessibilityLabel(Text("Add attendee"))
             })
             .disabled(newAttendee.isEmpty)
           }

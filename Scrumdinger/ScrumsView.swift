@@ -13,12 +13,15 @@ struct ScrumsView: View {
     var body: some View {
       List {
         ForEach(scrums, id: \.title) { scrum in
-          NavigationLink(destination: Text("Hello World")) {
+          NavigationLink(destination: DetailView(scrum: scrum)) {
             CardView(scrum: scrum)
           }.listRowBackground(scrum.color)
         }
       }
       .navigationTitle("Daily Scrums")
+//      .navigationBarItems(trailing: Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+//        Image(systemName: "plus")
+//      }))
       .toolbar(content: {
         ToolbarItem(placement: .navigationBarTrailing, content: {
           Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
